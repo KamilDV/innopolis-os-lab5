@@ -1,0 +1,25 @@
+m=1
+Primes in [0, 10000000): 664579
+real 6.80
+user 3.78
+sys 8.31
+m=2
+Primes in [0, 10000000): 664579
+real 6.94
+user 4.38
+sys 14.34
+m=4
+Primes in [0, 10000000): 664579
+real 10.75
+user 4.97
+sys 28.19
+m=10
+Primes in [0, 10000000): 664579
+real 11.77
+user 4.96
+sys 29.31
+m=100
+Primes in [0, 10000000): 664579
+real 11.65
+user 4.85
+sys 28.90

@@ -1,0 +1,6 @@
+Every run found 664579 primes below 10,000,000. On this Apple Silicon macOS
+machine, real times for 1, 2, 4, 10 and 100 threads were 1.75, 0.78, 0.41,
+0.16 and 0.06 seconds. More threads ran independent subranges in parallel.
+The interval division gives each thread a similar number of integers, but
+upper subranges cost more because trial division takes longer there. Timings
+are single measurements and depend on machine load and scheduling.

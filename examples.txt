@@ -1,0 +1,19 @@
+# Preliminary examples
+
+`example_pipe.c` creates an unnamed pipe, forks, waits for the child to confirm that
+its read end is open, sends the command-line message, and receives its length
+through a second pipe. `example_pipe.sh` runs it ten times.
+
+`example_threads.c` creates and joins two threads, so both IDs are printed before exit.
+`example_race.c` demonstrates an unsynchronized read-modify-write of `counter`; that
+statement is the critical section. Both threads may read the same old value
+and lose one increment. The unsynchronized access is a C data race, so its
+result is not guaranteed.
+
+`example_join.c` creates one worker at a time and joins it before creating the next.
+This serialization keeps the critical sections from overlapping. Joining two
+threads only after creating both does **not** protect a shared counter.
+
+`example_mutex.c` runs 1000 threads with 1000 increments each, first without and then
+with a mutex. The first count is undefined and may differ from 1,000,000;
+the mutex-protected count should be exactly 1,000,000.

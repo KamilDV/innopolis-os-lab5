@@ -1,0 +1,15 @@
+An unnamed pipe connects the parent publisher to its child subscriber. It has one
+read end and one write end. Closing the unused ends makes EOF detectable and
+prevents either process from accidentally using the wrong direction.
+
+Part II uses one FIFO per subscriber. A FIFO is a byte stream, so if all
+subscribers read one FIFO, each byte is consumed by one reader; it is not
+broadcast to everyone. Separate FIFOs let the publisher deliver every message
+to every subscriber. The parent sends each framed message to every publisher
+child through a separate unnamed pipe; each child forwards it to its FIFO.
+The 16-bit length prefix keeps message boundaries even though pipes themselves
+only carry bytes. Each child opens its FIFO for writing and signals readiness
+only after a subscriber has opened it for reading. Thus the parent starts
+reading stdin only when all subscribers are connected. Each message is at most
+1024 bytes; stdin lines longer than that are rejected. SIGINT/SIGTERM stop the
+processes and the publisher removes its FIFOs.

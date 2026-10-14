@@ -1,0 +1,9 @@
+Every run found 664579 primes. Real times for 1, 2, 4, 10 and 100 threads
+were 1.60, 1.14, 1.29, 1.26 and 0.73 seconds, compared with 1.75, 0.78,
+0.41, 0.16 and 0.06 seconds for exercise 3. Each worker reserves a unique
+candidate under the mutex, tests it without holding the lock, then locks
+again only to count a prime. This keeps the expensive test parallel and
+ensures no candidate is skipped or duplicated. The two lock operations per
+candidate cause contention, especially with many threads. The less uniform
+work distribution sometimes offsets part of that cost. Measurements are
+single runs on macOS and are sensitive to scheduling.

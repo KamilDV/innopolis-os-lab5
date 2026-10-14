@@ -1,0 +1,10 @@
+The slide says to implement exercise 3 with semaphores instead of condition
+variables, although exercise 3 has no condition variables. This solution
+interprets that as a reference to the producer-consumer exercise 5 and
+replaces its condition variables with counting semaphores. All five runs
+found 664579 primes. Real times for 1, 2, 4, 10 and 100 consumers were
+6.80, 6.94, 10.75, 11.77 and 11.65 seconds. This is slower than exercise 3
+in every measured case and slower than exercise 5 up to 10 consumers. The
+sem_wait/sem_post operations on every candidate and shared queue contention
+are substantial. Named semaphores are unlinked immediately after creation
+for compatibility with macOS, where sem_init is unavailable.

@@ -1,0 +1,8 @@
+Every run found 664579 primes. Real times for 1, 2, 4, 10 and 100 consumers
+were 2.56, 1.92, 1.75, 4.20 and 24.02 seconds. Exercise 3's times were
+1.75, 0.78, 0.41, 0.16 and 0.06 seconds; exercise 4's were 1.60, 1.14,
+1.29, 1.26 and 0.73 seconds. The bounded queue and condition variables
+coordinate one producer and multiple consumers. Values divisible by 2 or 3
+are discarded before queuing, with 2 and 3 counted separately. At high thread
+counts, contention and wakeups dominate the relatively cheap primality checks.
+These are single macOS measurements, not stable performance guarantees.
